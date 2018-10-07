@@ -1,0 +1,59 @@
+require "gosu"
+require "./new_player"
+require "./player"
+require "./star"
+
+module ZOrder
+  BACKGROUND, STARS, PLAYER, UI = *0..3
+end
+
+class Game < (Example rescue Gosu::Window)
+  def initialize(player = Player)
+    super 640, 480
+    self.caption = "Star Game"
+
+    @background_image = Gosu::Image.new("media/space.png", tileable: true)
+
+    @player = player
+    @player.warp(320, 240)
+
+    @stars = Array.new
+
+    @font = Gosu::Font.new(20)
+  end
+
+  def update
+    if Gosu.button_down? Gosu::KB_LEFT or Gosu.button_down? Gosu::GP_LEFT
+      @player.turn_left
+    end
+    if Gosu.button_down? Gosu::KB_RIGHT or Gosu.button_down? Gosu::GP_RIGHT
+      @player.turn_right
+    end
+    if Gosu.button_down? Gosu::KB_UP or Gosu.button_down? Gosu::GP_BUTTON_0
+      @player.accelerate
+    end
+    @player.move
+    @player.collect_stars(@stars)
+
+    if rand(100) < 4 and @stars.size < 25
+      @stars.push(StarCollection.new.create_star([:red,:green,:blue].sample))
+    end
+  end
+
+  def draw
+    @background_image.draw(0, 0, ZOrder::BACKGROUND)
+    @player.draw
+    @stars.each { |star| star.draw }
+    @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
+  end
+
+  def button_down(id)
+    if id == Gosu::KB_ESCAPE
+      close
+    else
+      super
+    end
+  end
+end
+
+Game.new(New_Player.instance).show if __FILE__ == $0
