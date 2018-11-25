@@ -29,7 +29,7 @@ In this program are used 3 Creational Design Patterns for Lab_1 and 3 Structural
 
 ***Iterator***
 
-  Iterator provide a way to access the elements of an aggregate object sequentially. So we have to be able to have acces to all objects from a list step by step in a loop to the end of the list. In the ruby exist an already defined iterator called `each`. Lets call it an internal iterator that is the most used method in the ruby. I also created an external iterator. This is a class that gets an array as a parameter and then you have acces to methods like `first`, `next`, `has_next`... This class is defined in the [externiterator.rb](https://github.com/UnnemotionalHyena/IPP/blob/master/Lab_1-2/externiterator.rb) file.
+  Iterator provide a way to access the elements of an aggregate object sequentially. So we have to be able to have acces to all objects from a list step by step in a loop to the end of the list. In the ruby exist an already defined iterator called `each`. Lets call it an internal iterator that is the most used method in the ruby. I also created an external iterator. This is a class that gets an array as a parameter and then you have acces to methods like `first`, `next`, `has_next`... This class is defined in the [externiterator.rb](https://github.com/UnnemotionalHyena/IPP/blob/master/Lab_1-2/externiterator.rb) file. This external iterator was used at 62'nd to 68'th lines in [game_1.rb](https://github.com/UnnemotionalHyena/IPP/blob/master/Lab_1-2/game_1.rb) file
 
 
 ***Command***
