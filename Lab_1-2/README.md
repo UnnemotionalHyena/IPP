@@ -1,5 +1,5 @@
 
-In this program are used 3 Creational Design Patterns for Lab_1 and 3 for Lab_2:
+In this program are used 3 Creational Design Patterns for Lab_1 and 3 Structural/Behavioral Patterns for Lab_2:
 
   * Lab_1
     * Abstract Factory
